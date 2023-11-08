@@ -75,10 +75,19 @@ namespace Proyecto1Calculadora
         protected void btnEquals_Click(object sender, EventArgs e)
         {
            
-           clsGlobales.num2 = float.Parse(lblCalculadora.Text.Substring(lblCalculadora.Text.IndexOf(clsGlobales.operacion) + 1));
+           
 
             if (clsGlobales.operacion == "+")
             {
+                clsGlobales.num2 = float.Parse(lblCalculadora.Text.Substring(lblCalculadora.Text.IndexOf(clsGlobales.operacion) + 1));
+
+                //01234
+                //25+10
+                //int indexOperador = lblCalculadora.Text.IndexOf(clsGlobales.operacion);
+                //string textoNum2 = lblCalculadora.Text.Substring(lblCalculadora.Text.IndexOf(clsGlobales.operacion) + 1); //10
+                //clsGlobales.num2 = float.Parse(textoNum2);
+
+
                 lblResultado.Text = clsCalculadora.sum(clsGlobales.num1, clsGlobales.num2).ToString();
                 clsGlobales.operacion = "";
                 clsGlobales.num1 = float.Parse(lblResultado.Text);
@@ -87,16 +96,31 @@ namespace Proyecto1Calculadora
             }
             else if (clsGlobales.operacion == "-")
             {
-               lblResultado.Text = clsCalculadora.subtraction(clsGlobales.num1, clsGlobales.num2).ToString();
-               clsGlobales.operacion = "";
+                if (clsGlobales.num1 != 0)
+                {
+                    clsGlobales.num2 = float.Parse(lblCalculadora.Text.Substring(lblCalculadora.Text.IndexOf(clsGlobales.operacion) + 1));
+                    lblResultado.Text = clsCalculadora.subtraction(clsGlobales.num1, clsGlobales.num2).ToString();
+                    clsGlobales.operacion = "";
+                }
+                else
+                {
+                    clsGlobales.num1 = 0;
+                    clsGlobales.num2 = float.Parse(lblCalculadora.Text.Substring(lblCalculadora.Text.IndexOf(clsGlobales.operacion) + 1));
+                    lblResultado.Text = clsCalculadora.subtraction(clsGlobales.num1, clsGlobales.num2).ToString();
+                    clsGlobales.operacion = "";
+                }
+
             }
-            else if (clsGlobales.operacion == "*")             {
+            else if (clsGlobales.operacion == "*")             
+            {
+                clsGlobales.num2 = float.Parse(lblCalculadora.Text.Substring(lblCalculadora.Text.IndexOf(clsGlobales.operacion) + 1));
                 lblResultado.Text = clsCalculadora.multiplication(clsGlobales.num1, clsGlobales.num2).ToString();
                 clsGlobales.operacion = "";
             }
             else if (clsGlobales.operacion == "/")
             {
-                if(clsGlobales.num1 != 0)
+                clsGlobales.num2 = float.Parse(lblCalculadora.Text.Substring(lblCalculadora.Text.IndexOf(clsGlobales.operacion) + 1));
+                if (clsGlobales.num1 != 0)
                 {
                     lblResultado.Text = clsCalculadora.division(clsGlobales.num1, clsGlobales.num2).ToString();
                     clsGlobales.operacion = "";
@@ -105,17 +129,28 @@ namespace Proyecto1Calculadora
                 {
                     lblResultado.Text = (0).ToString();
                 }
-
+            }
+            else if (clsGlobales.operacion == "10^")            
+            {
+                clsGlobales.num1 = float.Parse(lblCalculadora.Text.Substring(3));
+                lblResultado.Text = clsCalculadora.tenToThe(clsGlobales.num1).ToString();
+                lblCalculadora.Text = "10^" + (clsGlobales.num1).ToString();
+            }
+            else if (clsGlobales.operacion == "^")
+            {
+                clsGlobales.num1 = float.Parse(lblCalculadora.Text.Substring(0, (lblCalculadora.Text.IndexOf(clsGlobales.operacion)) -1));
+                clsGlobales.num2 = float.Parse(lblCalculadora.Text.Substring(lblCalculadora.Text.IndexOf(clsGlobales.operacion) + 1));
+                lblResultado.Text = clsCalculadora.power(clsGlobales.num1, clsGlobales.num2).ToString();
             }
             else
             {
-                clsGlobales.num2 = 1;
+                
                 lblResultado.Text = lblCalculadora.Text;
                 lblTest1.Text = "Num1: " + clsGlobales.num1 + " Num2: " + clsGlobales.num2 + " lblCalculadora: " + lblCalculadora.Text;
             }
             
-           // lblCalculadora.Text = string.Empty;
-           // clsGlobales.num1 = float.Parse(lblResultado.Text);
+           //lblCalculadora.Text = string.Empty;
+          // clsGlobales.num1 = float.Parse(lblResultado.Text);
         }
 
         protected void btnSum_Click(object sender, EventArgs e)
@@ -128,9 +163,18 @@ namespace Proyecto1Calculadora
         protected void btnMinus_Click(object sender, EventArgs e)
         {
             clsGlobales.operacion = "-";
-            clsGlobales.num1 = float.Parse(lblCalculadora.Text);
-            lblCalculadora.Text = lblCalculadora.Text + " - ";
-            clsGlobales.terminado = true;
+
+            if (clsGlobales.num1 != 0)
+            {
+                clsGlobales.num1 = float.Parse(lblCalculadora.Text);
+                lblCalculadora.Text = lblCalculadora.Text + " - ";
+            }
+            else
+            {
+                clsGlobales.num1 = 0;
+                lblCalculadora.Text = clsGlobales.num1 + " - ";
+            }
+
         }
 
         protected void btnMultiply_Click(object sender, EventArgs e)
@@ -138,7 +182,6 @@ namespace Proyecto1Calculadora
             clsGlobales.operacion = "*";
             clsGlobales.num1 = float.Parse(lblCalculadora.Text);
             lblCalculadora.Text = lblCalculadora.Text + " x ";
-            clsGlobales.terminado = true;
         }
 
         protected void btnDivision_Click(object sender, EventArgs e)
@@ -146,7 +189,6 @@ namespace Proyecto1Calculadora
             clsGlobales.operacion = "/";
             clsGlobales.num1 = float.Parse(lblCalculadora.Text);
             lblCalculadora.Text = lblCalculadora.Text + " ÷ ";
-            clsGlobales.terminado = true;
         }
 
         protected void btnComma_Click(object sender, EventArgs e)
@@ -191,22 +233,52 @@ namespace Proyecto1Calculadora
 
         protected void btnXtotheY_Click(object sender, EventArgs e)
         {
-            clsGlobales.num1 = float.Parse(lblCalculadora.Text);
-            clsGlobales.num2 = float.Parse(lblCalculadora.Text); //*******hacer que sirva el num2
-            lblResultado.Text = clsCalculadora.power2(clsGlobales.num1).ToString();
-            lblCalculadora.Text = (clsGlobales.num1).ToString() + "^" + (clsGlobales.num2).ToString();
+            if (lblCalculadora.Text.Length != 0)
+            {
+                clsGlobales.num1 = float.Parse(lblCalculadora.Text.Substring(0, (lblCalculadora.Text.IndexOf(clsGlobales.operacion)) - 1));
+                clsGlobales.num2 = float.Parse(lblCalculadora.Text.Substring(lblCalculadora.Text.IndexOf(clsGlobales.operacion) + 1));
+                lblCalculadora.Text = (clsGlobales.num1).ToString() + "^" + (clsGlobales.num2).ToString();
+                lblResultado.Text = clsCalculadora.power(clsGlobales.num1, clsGlobales.num2).ToString();
+            }
+            else
+            {
+                lblCalculadora.Text = (clsGlobales.num1).ToString() + "^" + (clsGlobales.num2).ToString();
+                clsGlobales.operacion = "^";
+            }
         }
 
-        protected void btn10totheX_Click(object sender, EventArgs e) //hacer que el 10 se ponga primero antes del numero al que lo elevo?? sirve solo si pongo el numero primero y luego el 10 elevado
+        protected void btn10totheX_Click(object sender, EventArgs e) 
         {
-            clsGlobales.num1 = float.Parse(lblCalculadora.Text);
-            lblResultado.Text = clsCalculadora.tenToThe(clsGlobales.num1).ToString();
-            lblCalculadora.Text = "10^" + (clsGlobales.num1).ToString();
+            if(lblCalculadora.Text.Length != 0)
+            {
+                clsGlobales.num1 = float.Parse(lblCalculadora.Text);
+                lblResultado.Text = clsCalculadora.tenToThe(clsGlobales.num1).ToString();
+                lblCalculadora.Text = "10^" + (clsGlobales.num1).ToString();
+            }
+            else
+            {
+                lblCalculadora.Text = "10^";
+                clsGlobales.operacion = "10^";
+            }            
         }
 
         protected void btnDelete_Click(object sender, EventArgs e)
         {
-            lblCalculadora.Text = clsCalculadora.TrimLastCharacter(lblCalculadora.Text);  //sirve pero si hay dos del mismo numero ex66 me borra ambos en lugar de solo 1 ???
+            if (lblCalculadora.Text.Length - 1 == 0)
+            {
+                lblCalculadora.Text = "0";
+            }
+            else
+            {
+                lblCalculadora.Text = lblCalculadora.Text.Remove(lblCalculadora.Text.Length - 1, 1);
+            }
+        }
+
+        protected void btnFact_Click(object sender, EventArgs e)
+        {
+            clsGlobales.num1 = float.Parse(lblCalculadora.Text);  
+
+            lblCalculadora.Text = clsCalculadora.factorial(clsGlobales.num1).ToString();            
         }
     }
 }

@@ -47,7 +47,6 @@ namespace Proyecto1Calculadora
         public static float power(float num1, float num2)
         {
             return (float)Math.Pow(num1, num2);
-
         }
 
         public static float tenToThe(float num1)
@@ -55,9 +54,12 @@ namespace Proyecto1Calculadora
             return (float)Math.Pow(10, num1);
         }
 
-        public static float factorial(float num1)
+        public static double factorial(double number)
         {
-            return (float)Math.Pow(num1, (num1-1)); //FOR??
+            if (number == 0)
+                return 1;
+            else
+                return number * factorial(number - 1);
         }
 
         public static float logarithm(float num1)
@@ -65,10 +67,6 @@ namespace Proyecto1Calculadora
             return (float)Math.Log10(num1);
         }
 
-
-       public static string TrimLastCharacter(this string sender) =>
-            string.IsNullOrWhiteSpace(sender) ?
-            sender : sender.TrimEnd(sender[sender.Length - 1]);
        
 
     }

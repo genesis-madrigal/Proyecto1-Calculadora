@@ -83,7 +83,7 @@
                         <asp:Button ID="btnDelete" runat="server" CSSClass="button button-hover" Height="50px" Text="←" Width="82px" OnClick="btnDelete_Click" />
                         </strong></td>
                     <td class="auto-style11"><strong>
-                        <asp:Button ID="btnFact" runat="server" CSSClass="button button-hover" Text="n!" />
+                        <asp:Button ID="btnFact" runat="server" CSSClass="button button-hover" Text="n!" OnClick="btnFact_Click" />
                         </strong></td>
                     <td class="auto-style11"><strong>
                         <asp:Button ID="btnDivision" runat="server" CSSClass="button button-hover" Text="÷" OnClick="btnDivision_Click" />
