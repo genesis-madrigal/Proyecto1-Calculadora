@@ -74,13 +74,13 @@
             <table class="auto-style1">
                 <tr>
                     <td class="auto-style13"><strong>
-                        <asp:Button ID="btnSQR" CSSClass="button button-hover" runat="server" Text="√x" />
+                        <asp:Button ID="btnSQR" CSSClass="button button-hover" runat="server" Text="√x" OnClick="btnSQR_Click" />
                         </strong></td>
                     <td class="auto-style11">
                         <asp:Button ID="btnClear" CSSClass="button button-hover" runat="server"  Text="C" OnClick="btnClear_Click" />
                     </td>
                     <td class="auto-style11"><strong>
-                        <asp:Button ID="btnDelete" runat="server" CSSClass="button button-hover" Height="50px" Text="←" Width="82px" />
+                        <asp:Button ID="btnDelete" runat="server" CSSClass="button button-hover" Height="50px" Text="←" Width="82px" OnClick="btnDelete_Click" />
                         </strong></td>
                     <td class="auto-style11"><strong>
                         <asp:Button ID="btnFact" runat="server" CSSClass="button button-hover" Text="n!" />
@@ -91,7 +91,7 @@
                 </tr>
                 <tr>
                     <td class="auto-style10"><strong>
-                        <asp:Button ID="btnXtotheY" runat="server" CSSClass="button button-hover" Text="x^y" />
+                        <asp:Button ID="btnXtotheY" runat="server" CSSClass="button button-hover" Text="x^y" OnClick="btnXtotheY_Click" />
                         </strong></td>
                     <td class="auto-style12"><strong>
                         <asp:Button ID="btn7" runat="server" CSSClass="button button-hover" Text="7" OnClick="btn7_Click" />
@@ -108,7 +108,7 @@
                 </tr>
                 <tr>
                     <td class="auto-style13"><strong>
-                        <asp:Button ID="btn10totheX" runat="server" CSSClass="button button-hover" Text="10^x" />
+                        <asp:Button ID="btn10totheX" runat="server" CSSClass="button button-hover" Text="10^x" OnClick="btn10totheX_Click" />
                         </strong></td>
                     <td class="auto-style13"><strong>
                         <asp:Button ID="btn4" runat="server" CSSClass="button button-hover" Text="4" OnClick="btn4_Click" />
@@ -142,7 +142,7 @@
                 </tr>
                 <tr>
                     <td class="auto-style13"><strong>
-                        <asp:Button ID="btnSquare" runat="server" CSSClass="button button-hover" Text="x² " />
+                        <asp:Button ID="btnSquare" runat="server" CSSClass="button button-hover" Text="x² " OnClick="btnSquare_Click" />
                         </strong></td>
                     <td class="auto-style13"><strong>
                         <asp:Button ID="btnNegate" runat="server" CSSClass="button button-hover" Text="+/-" OnClick="btnNegate_Click" />

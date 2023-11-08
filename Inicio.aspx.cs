@@ -29,120 +29,47 @@ namespace Proyecto1Calculadora
 
         protected void btn1_Click(object sender, EventArgs e)
         {
-            if (clsGlobales.terminado == false)
-            {
-
-                lblCalculadora.Text = lblCalculadora.Text + "1";
-            } 
-            else
-            {
-                lblCalculadora.Text = lblCalculadora.Text + "1";
-            }
+           lblCalculadora.Text = lblCalculadora.Text + "1";
         }
 
         protected void btn2_Click(object sender, EventArgs e)
         {
-            if (clsGlobales.terminado == false)
-            {
-
-                lblCalculadora.Text = lblCalculadora.Text + "2";
-            }
-            else
-            {
-                lblCalculadora.Text = lblCalculadora.Text + "2";
-            }
+           lblCalculadora.Text = lblCalculadora.Text + "2";
         }
 
         protected void btn3_Click(object sender, EventArgs e)
         {
-            if (clsGlobales.terminado == false)
-            {
-
-                lblCalculadora.Text = lblCalculadora.Text + "3";
-            }
-            else
-            {
-                lblCalculadora.Text = lblCalculadora.Text + "3";
-            }
+            lblCalculadora.Text = lblCalculadora.Text + "3";
         }
 
         protected void btn4_Click(object sender, EventArgs e)
         {
-            if (clsGlobales.terminado == false)
-            {
-
-                lblCalculadora.Text = lblCalculadora.Text + "4";
-            }
-            else
-            {
-                lblCalculadora.Text = lblCalculadora.Text + "4";
-            }
+            lblCalculadora.Text = lblCalculadora.Text + "4";
         }
 
         protected void btn5_Click(object sender, EventArgs e)
         {
-            if (clsGlobales.terminado == false)
-            {
-
-                lblCalculadora.Text = lblCalculadora.Text + "5";
-            }
-            else
-            {
-
-                lblCalculadora.Text = lblCalculadora.Text + "5";
-            }
+            lblCalculadora.Text = lblCalculadora.Text + "5";
         }
 
         protected void btn6_Click(object sender, EventArgs e)
         {
-            if (clsGlobales.terminado == false)
-            {
-
-                lblCalculadora.Text = lblCalculadora.Text + "6";
-            }
-            else
-            {
-                lblCalculadora.Text = lblCalculadora.Text + "6";
-            }
+            lblCalculadora.Text = lblCalculadora.Text + "6";
         }
 
         protected void btn7_Click(object sender, EventArgs e)
         {
-            if (clsGlobales.terminado == false)
-            {
-
-                lblCalculadora.Text = lblCalculadora.Text + "7";
-            }
-            else
-            {
-                lblCalculadora.Text = lblCalculadora.Text + "7";
-            }
+            lblCalculadora.Text = lblCalculadora.Text + "7";
         }
 
         protected void btn8_Click(object sender, EventArgs e)
         {
-            if (clsGlobales.terminado == false)
-            {
-
-                lblCalculadora.Text = lblCalculadora.Text + "8";
-            }
-            else
-            {
-                lblCalculadora.Text = lblCalculadora.Text + "8";
-            }
+            lblCalculadora.Text = lblCalculadora.Text + "8";
         }
 
         protected void btn9_Click(object sender, EventArgs e)
         {
-            if (clsGlobales.terminado == false)
-            {
-
-                lblCalculadora.Text = lblCalculadora.Text + "9";
-            }
-            else
-            {
-                lblCalculadora.Text = lblCalculadora.Text + "9";
-            }
+            lblCalculadora.Text = lblCalculadora.Text + "9";
         }
 
         protected void btnEquals_Click(object sender, EventArgs e)
@@ -246,6 +173,40 @@ namespace Proyecto1Calculadora
             lblResultado.Text = clsCalculadora.logarithm(clsGlobales.num1).ToString();
             lblCalculadora.Text = "log(" + (clsGlobales.num1).ToString() + ")";
 
+        }
+
+        protected void btnSQR_Click(object sender, EventArgs e)
+        {
+            clsGlobales.num1 = float.Parse(lblCalculadora.Text);
+            lblResultado.Text = clsCalculadora.squareRoot(clsGlobales.num1).ToString();
+            lblCalculadora.Text = "√" + (clsGlobales.num1).ToString();
+        }
+
+        protected void btnSquare_Click(object sender, EventArgs e)
+        {
+            clsGlobales.num1 = float.Parse(lblCalculadora.Text);
+            lblResultado.Text = clsCalculadora.power2(clsGlobales.num1).ToString();
+            lblCalculadora.Text = (clsGlobales.num1).ToString() + "²";
+        }
+
+        protected void btnXtotheY_Click(object sender, EventArgs e)
+        {
+            clsGlobales.num1 = float.Parse(lblCalculadora.Text);
+            clsGlobales.num2 = float.Parse(lblCalculadora.Text); //*******hacer que sirva el num2
+            lblResultado.Text = clsCalculadora.power2(clsGlobales.num1).ToString();
+            lblCalculadora.Text = (clsGlobales.num1).ToString() + "^" + (clsGlobales.num2).ToString();
+        }
+
+        protected void btn10totheX_Click(object sender, EventArgs e) //hacer que el 10 se ponga primero antes del numero al que lo elevo?? sirve solo si pongo el numero primero y luego el 10 elevado
+        {
+            clsGlobales.num1 = float.Parse(lblCalculadora.Text);
+            lblResultado.Text = clsCalculadora.tenToThe(clsGlobales.num1).ToString();
+            lblCalculadora.Text = "10^" + (clsGlobales.num1).ToString();
+        }
+
+        protected void btnDelete_Click(object sender, EventArgs e)
+        {
+            lblCalculadora.Text = clsCalculadora.TrimLastCharacter(lblCalculadora.Text);  //sirve pero si hay dos del mismo numero ex66 me borra ambos en lugar de solo 1 ???
         }
     }
 }
