@@ -12,7 +12,7 @@ namespace Proyecto1Calculadora
             return (float)num1 + num2;
         }
 
-        public static float substraction(float num1, float num2)
+        public static float subtraction(float num1, float num2)
         {
             return (float)num1 - num2;
         }
@@ -24,7 +24,7 @@ namespace Proyecto1Calculadora
 
         public static float division(float num1, float num2)
         {
-            return (float)num1/num2;
+            return (float)num1 / num2;
         }
 
         public static float negate(float num1)

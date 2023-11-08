@@ -15,7 +15,10 @@ namespace Proyecto1Calculadora
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                clsGlobales.num1 = 0;
+            }
         }
 
         protected void btnClear_Click(object sender, EventArgs e)
@@ -144,38 +147,48 @@ namespace Proyecto1Calculadora
 
         protected void btnEquals_Click(object sender, EventArgs e)
         {
-            clsGlobales.num2 = float.Parse(lblCalculadora.Text.Substring(lblCalculadora.Text.IndexOf(clsGlobales.operacion) + 1));
+           
+           clsGlobales.num2 = float.Parse(lblCalculadora.Text.Substring(lblCalculadora.Text.IndexOf(clsGlobales.operacion) + 1));
 
-            if (clsGlobales.operacion == "+") 
+            if (clsGlobales.operacion == "+")
             {
-                
                 lblResultado.Text = clsCalculadora.sum(clsGlobales.num1, clsGlobales.num2).ToString();
                 clsGlobales.operacion = "";
+                clsGlobales.num1 = float.Parse(lblResultado.Text);
+                clsGlobales.num2 = 0;
 
             }
             else if (clsGlobales.operacion == "-")
             {
-                lblResultado.Text = clsCalculadora.substraction(clsGlobales.num1, clsGlobales.num2).ToString();
-                clsGlobales.operacion = "";
+               lblResultado.Text = clsCalculadora.subtraction(clsGlobales.num1, clsGlobales.num2).ToString();
+               clsGlobales.operacion = "";
             }
-            else if (clsGlobales.operacion == "*")
-            {
+            else if (clsGlobales.operacion == "*")             {
                 lblResultado.Text = clsCalculadora.multiplication(clsGlobales.num1, clsGlobales.num2).ToString();
                 clsGlobales.operacion = "";
             }
             else if (clsGlobales.operacion == "/")
             {
-                lblResultado.Text = clsCalculadora.division(clsGlobales.num1, clsGlobales.num2).ToString();
-                clsGlobales.operacion = "";
+                if(clsGlobales.num1 != 0)
+                {
+                    lblResultado.Text = clsCalculadora.division(clsGlobales.num1, clsGlobales.num2).ToString();
+                    clsGlobales.operacion = "";
+                }
+                else if (clsGlobales.num1 == 0)
+                {
+                    lblResultado.Text = (0).ToString();
+                }
+
             }
             else
             {
-                clsGlobales.terminado = true;
                 clsGlobales.num2 = 1;
                 lblResultado.Text = lblCalculadora.Text;
                 lblTest1.Text = "Num1: " + clsGlobales.num1 + " Num2: " + clsGlobales.num2 + " lblCalculadora: " + lblCalculadora.Text;
             }
-            clsGlobales.terminado = true;
+            
+           // lblCalculadora.Text = string.Empty;
+           // clsGlobales.num1 = float.Parse(lblResultado.Text);
         }
 
         protected void btnSum_Click(object sender, EventArgs e)
@@ -183,7 +196,6 @@ namespace Proyecto1Calculadora
             clsGlobales.operacion = "+";
             clsGlobales.num1 = float.Parse(lblCalculadora.Text);// DI SI            
             lblCalculadora.Text = lblCalculadora.Text + " + ";
-            clsGlobales.terminado = true;
         }
 
         protected void btnMinus_Click(object sender, EventArgs e)
@@ -217,16 +229,7 @@ namespace Proyecto1Calculadora
 
         protected void btn0_Click(object sender, EventArgs e)
         {
-            if (clsGlobales.terminado == false)
-            {
-
-                lblCalculadora.Text = lblCalculadora.Text + "0";
-            }
-            else
-            {
-                
-                lblCalculadora.Text = lblCalculadora.Text + "0";
-            }
+             lblCalculadora.Text = lblCalculadora.Text + "0";
         }
 
         protected void btnNegate_Click(object sender, EventArgs e)
