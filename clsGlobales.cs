@@ -10,10 +10,7 @@ namespace Proyecto1Calculadora
         public float num1 { get; set; }
         public float num2 { get; set; }
 
-        public bool terminado { get; set; }
-
         public float resultado { get; set; }
-
 
         public string operacion = "";
 
