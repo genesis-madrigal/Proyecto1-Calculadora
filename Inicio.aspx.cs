@@ -18,58 +18,78 @@ namespace Proyecto1Calculadora
             if (!IsPostBack)
             {
                 clsGlobales.num1 = 0;
+                clsGlobales.num2 = 0;
+                lblCalculadora.Text = "0";
             }
         }
 
         protected void btnClear_Click(object sender, EventArgs e)
         {
-            lblCalculadora.Text = string.Empty;
+            lblCalculadora.Text = "0";
             lblResultado.Text = string.Empty;
+        }
+
+        protected void changeNumber(int btnNumber)
+        {
+            if(lblCalculadora.Text == "0") 
+            {
+                lblCalculadora.Text = btnNumber.ToString();
+            }
+            else
+            {
+                lblCalculadora.Text += btnNumber.ToString();
+            }
         }
 
         protected void btn1_Click(object sender, EventArgs e)
         {
-           lblCalculadora.Text = lblCalculadora.Text + "1";
+            changeNumber(1);
         }
 
         protected void btn2_Click(object sender, EventArgs e)
         {
-           lblCalculadora.Text = lblCalculadora.Text + "2";
+            changeNumber(2);
         }
 
         protected void btn3_Click(object sender, EventArgs e)
         {
-            lblCalculadora.Text = lblCalculadora.Text + "3";
+            changeNumber(3);
         }
 
         protected void btn4_Click(object sender, EventArgs e)
         {
-            lblCalculadora.Text = lblCalculadora.Text + "4";
+            changeNumber(4);
         }
 
         protected void btn5_Click(object sender, EventArgs e)
         {
-            lblCalculadora.Text = lblCalculadora.Text + "5";
+            changeNumber(5);
         }
 
         protected void btn6_Click(object sender, EventArgs e)
         {
-            lblCalculadora.Text = lblCalculadora.Text + "6";
+            changeNumber(6);
         }
 
         protected void btn7_Click(object sender, EventArgs e)
         {
-            lblCalculadora.Text = lblCalculadora.Text + "7";
+            changeNumber(7);
         }
 
         protected void btn8_Click(object sender, EventArgs e)
         {
-            lblCalculadora.Text = lblCalculadora.Text + "8";
+            changeNumber(8);
         }
 
         protected void btn9_Click(object sender, EventArgs e)
         {
-            lblCalculadora.Text = lblCalculadora.Text + "9";
+            changeNumber(9);
+        }
+
+        protected void btn0_Click(object sender, EventArgs e)
+        {
+            changeNumber(0);
+
         }
 
         protected void btnEquals_Click(object sender, EventArgs e)
@@ -163,17 +183,10 @@ namespace Proyecto1Calculadora
         protected void btnMinus_Click(object sender, EventArgs e)
         {
             clsGlobales.operacion = "-";
-
-            if (clsGlobales.num1 != 0)
-            {
-                clsGlobales.num1 = float.Parse(lblCalculadora.Text);
-                lblCalculadora.Text = lblCalculadora.Text + " - ";
-            }
-            else
-            {
-                clsGlobales.num1 = 0;
-                lblCalculadora.Text = clsGlobales.num1 + " - ";
-            }
+           
+            clsGlobales.num1 = float.Parse(lblCalculadora.Text);
+            lblCalculadora.Text = lblCalculadora.Text + " - ";
+            
 
         }
 
@@ -181,14 +194,14 @@ namespace Proyecto1Calculadora
         {
             clsGlobales.operacion = "*";
             clsGlobales.num1 = float.Parse(lblCalculadora.Text);
-            lblCalculadora.Text = lblCalculadora.Text + " x ";
+            lblCalculadora.Text = lblCalculadora.Text + " * ";
         }
 
         protected void btnDivision_Click(object sender, EventArgs e)
         {
             clsGlobales.operacion = "/";
             clsGlobales.num1 = float.Parse(lblCalculadora.Text);
-            lblCalculadora.Text = lblCalculadora.Text + " ÷ ";
+            lblCalculadora.Text = lblCalculadora.Text + " / ";
         }
 
         protected void btnComma_Click(object sender, EventArgs e)
@@ -196,14 +209,7 @@ namespace Proyecto1Calculadora
             lblCalculadora.Text = lblCalculadora.Text + ".";
         }
 
-        protected void btn0_Click(object sender, EventArgs e)
-        {
-            if (lblCalculadora.Text != "0")
-            {
-                lblCalculadora.Text = lblCalculadora.Text + "0";
-            }
-
-        }
+       
 
         protected void btnNegate_Click(object sender, EventArgs e)
         {
