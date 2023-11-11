@@ -193,12 +193,16 @@ namespace Proyecto1Calculadora
 
         protected void btnComma_Click(object sender, EventArgs e)
         {
-            lblCalculadora.Text = lblCalculadora.Text + ",";
+            lblCalculadora.Text = lblCalculadora.Text + ".";
         }
 
         protected void btn0_Click(object sender, EventArgs e)
         {
-             lblCalculadora.Text = lblCalculadora.Text + "0";
+            if (lblCalculadora.Text != "0")
+            {
+                lblCalculadora.Text = lblCalculadora.Text + "0";
+            }
+
         }
 
         protected void btnNegate_Click(object sender, EventArgs e)
