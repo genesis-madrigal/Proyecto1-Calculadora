@@ -101,12 +101,6 @@ namespace Proyecto1Calculadora
             {
                 clsGlobales.num2 = float.Parse(lblCalculadora.Text.Substring(lblCalculadora.Text.IndexOf(clsGlobales.operacion) + 1));
 
-                //01234
-                //25+10
-                //int indexOperador = lblCalculadora.Text.IndexOf(clsGlobales.operacion);
-                //string textoNum2 = lblCalculadora.Text.Substring(lblCalculadora.Text.IndexOf(clsGlobales.operacion) + 1); //10
-                //clsGlobales.num2 = float.Parse(textoNum2);
-
 
                 lblResultado.Text = clsCalculadora.sum(clsGlobales.num1, clsGlobales.num2).ToString();
                 clsGlobales.operacion = "";
@@ -169,8 +163,6 @@ namespace Proyecto1Calculadora
                 lblTest1.Text = "Num1: " + clsGlobales.num1 + " Num2: " + clsGlobales.num2 + " lblCalculadora: " + lblCalculadora.Text;
             }
             
-           //lblCalculadora.Text = string.Empty;
-          // clsGlobales.num1 = float.Parse(lblResultado.Text);
         }
 
         protected void btnSum_Click(object sender, EventArgs e)
