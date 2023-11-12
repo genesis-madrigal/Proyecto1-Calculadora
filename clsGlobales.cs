@@ -14,6 +14,8 @@ namespace Proyecto1Calculadora
 
         public string operacion = "";
 
+        public int operadores = 0;
+
         public clsGlobales()
         {
             num1 = 0.0f;

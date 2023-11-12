@@ -152,40 +152,19 @@
                 </div>               
             </div>
              
-          
-
-            <div class="auto-style2 white-bg">
-
-                <p class="auto-style3">
-                    <strong>
-                        
-                        </strong>
-                        
-                    <strong>
-                        
-                        
-                        
-                        </strong></p>
-                <p class="auto-style3">
-                    <strong>
-                        
-                        
-                        </strong></p>
-                <p class="auto-style3">
-                    <strong>
-                        
-                        </strong></p>
-                <p class="auto-style3">
-                    <strong>
-                        
-                        </strong></p>
-                <p class="auto-style3">
-                    <strong>
-                        
-                        </strong></p>
+            <div class="container">
+                <div class="row">
+                    <div class="col"></div>
+                    <div class="col text-center fs-1">
+                        <asp:Label ID="lblTest1" runat="server" ></asp:Label>
+                    </div>
+                    <div class="col"></div>
+                </div>
             </div>
+
+            
         </div>
-        <asp:Label ID="lblTest1" runat="server"></asp:Label>
+       
     </form>
 </body>
 </html>
